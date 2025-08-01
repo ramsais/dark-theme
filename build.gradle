@@ -1,0 +1,89 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.intellij' version '1.17.0'
+}
+
+group = 'org.srs'
+version = '1.0.0'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // No specific dependencies needed for a theme plugin
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
+}
+
+// Configure Gradle IntelliJ Plugin
+// See https://plugins.jetbrains.com/docs/intellij/tools-gradle-intellij-plugin.html
+intellij {
+    version = '2025.1'
+    type = 'IC' // Target IntelliJ IDEA Community Edition
+    plugins = []
+
+    // Enable hot-reloading of theme resources
+    instrumentCode = false
+}
+
+patchPluginXml {
+    pluginDescription = """
+        Dark theme for JetBrains IDEs.
+        A custom dark theme designed to reduce eye strain and provide a comfortable coding experience.
+    """
+    changeNotes = """
+        Initial release of the dark theme plugin.
+    """
+    sinceBuild = "251"
+    untilBuild = "253.*"
+}
+
+// Set the JVM compatibility versions
+tasks.withType(JavaCompile).configureEach {
+    sourceCompatibility = '17'
+    targetCompatibility = '17'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+// Skip buildSearchableOptions task for theme plugins
+tasks.named('buildSearchableOptions') {
+    enabled = false
+}
+
+// Configure runIde task for hot-reloading of theme resources
+runIde {
+    // Enable auto-reload of resources
+    autoReloadPlugins = true
+
+    // Pass system properties to the IDE process
+    systemProperties['idea.auto.reload.plugins'] = 'true'
+    systemProperties['ide.plugins.snapshot.on.demand.loading'] = 'true'
+    systemProperties['ide.ui.theme.reload.on.change'] = 'true'
+
+    // Increase memory for better performance
+    jvmArgs = ['-Xmx2g']
+}
+
+// Add a task to watch for theme file changes and trigger reload
+tasks.register('watchTheme') {
+    group = 'Theme Development'
+    description = 'Watches theme files for changes and triggers reload'
+
+    doLast {
+        println "Watching theme files for changes..."
+        println "Edit files in src/main/resources/theme/ to see changes in real-time"
+        println "Press Ctrl+C to stop watching"
+    }
+
+    finalizedBy('runIde')
+}

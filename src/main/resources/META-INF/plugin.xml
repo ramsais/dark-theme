@@ -1,0 +1,16 @@
+<idea-plugin>
+    <id>org.srs.dark-theme</id>
+    <name>SRS Dark Theme</name>
+    <vendor email="support@example.com" url="http://www.example.com">SRS</vendor>
+
+    <description><![CDATA[
+        Dark theme for JetBrains IDEs.
+        A custom dark theme designed to reduce eye strain and provide a comfortable coding experience.
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <themeProvider id="org.srs.dark-theme" path="/theme/srs-dark-theme.theme.json"/>
+    </extensions>
+</idea-plugin>
