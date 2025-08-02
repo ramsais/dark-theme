@@ -3,7 +3,7 @@ plugins {
     id 'org.jetbrains.intellij' version '1.17.0'
 }
 
-group = 'org.srs'
+group = 'org.coding'
 version = '1.0.0'
 
 java {
@@ -72,6 +72,17 @@ runIde {
 
     // Increase memory for better performance
     jvmArgs = ['-Xmx2g']
+}
+
+// Configure publishPlugin task for uploading to JetBrains Marketplace
+publishPlugin {
+    token = System.getenv("INTELLIJ_PUBLISH_TOKEN") ?: findProperty("intellijPublishToken")
+
+    // Optional: channels to publish to (default is 'default')
+    // channels = ['stable']
+
+    // Optional: custom repository URL (default is JetBrains Marketplace)
+    // repositoryUrl = 'https://plugins.jetbrains.com'
 }
 
 // Add a task to watch for theme file changes and trigger reload

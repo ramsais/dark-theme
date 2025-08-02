@@ -1,8 +1,8 @@
 {
-  "name": "SRS Dark Theme",
+  "name": "Coding Dark Theme",
   "dark": true,
-  "author": "SRS",
-  "editorScheme": "/theme/srs-dark-editor.xml",
+  "author": "Coding",
+  "editorScheme": "/theme/coding-dark-editor.xml",
   "ui": {
     "*": {
       "background": "#000000",

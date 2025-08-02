@@ -1,4 +1,4 @@
-package org.srs.plugins;
+package org.coding.plugins;
 
 /**
  * This class is intentionally empty.

@@ -1,7 +1,7 @@
 <idea-plugin>
-    <id>org.srs.dark-theme</id>
-    <name>SRS Dark Theme</name>
-    <vendor email="support@example.com" url="http://www.example.com">SRS</vendor>
+    <id>org.coding.dark-theme</id>
+    <name>Coding Dark Theme</name>
+    <vendor email="support@coding-plugins.org" url="https://github.com/coding/dark-theme">Coding Plugins</vendor>
 
     <description><![CDATA[
         Dark theme for JetBrains IDEs.
@@ -11,6 +11,6 @@
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <themeProvider id="org.srs.dark-theme" path="/theme/srs-dark-theme.theme.json"/>
+        <themeProvider id="org.coding.dark-theme" path="/theme/coding-dark-theme.theme.json"/>
     </extensions>
 </idea-plugin>

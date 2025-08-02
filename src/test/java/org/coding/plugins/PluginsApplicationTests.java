@@ -1,4 +1,4 @@
-package org.srs.plugins;
+package org.coding.plugins;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
