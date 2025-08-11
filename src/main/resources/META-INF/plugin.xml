@@ -1,0 +1,16 @@
+<idea-plugin>
+    <id>org.coding.dark-theme</id>
+    <name>Coding Dark Theme</name>
+    <vendor email="support@coding-plugins.org" url="https://github.com/coding/dark-theme">Coding Plugins</vendor>
+
+    <description><![CDATA[
+        Dark theme for JetBrains IDEs.
+        A custom dark theme designed to reduce eye strain and provide a comfortable coding experience.
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <themeProvider id="org.coding.dark-theme" path="/theme/coding-dark-theme.theme.json"/>
+    </extensions>
+</idea-plugin>
